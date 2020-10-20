@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Routine<small>All course exams</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-8 col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">
+									CourseExam Insert Form (<span th:text="${stclass}"></span>)
+								</h3>
+								<p class="text-red" th:text="${errormessage}"></p>
+							</div>
+							<div class="box-body table-responsive no-padding">
+							<div th:if="!${#lists.isEmpty(Success)}">
+									<div class="alert alert-success alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">X</button>
+										<h4>
+											<i class="icon fa fa-check"></i> Success!
+										</h4>
+										Course Examination Added.
+									</div>
+								</div>
+								<div th:if="!${#lists.isEmpty(errormessage)}">
+									<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">X</button>
+										<h4>
+											<i class="icon fa fa-ban"></i> Alert!
+										</h4>
+										<p class="text-white" th:text="${errormessage}"></p>
+
+									</div>
+								</div>
+							
+								<div class="col-md-12">
+									<form role="form" method="POST" th:object="${courseExam}"
+										th:action="@{/admincourseExam/save-courseExam}"
+										enctype="multipart/form-data">
+										<input type="hidden" id="stclass" name="stclass"
+											th:value="${stclass}" /> <input type="hidden" id="exam"
+											name="exam" th:value="${exam.id}" />
+
+									
+										<div class="row">
+											<div class="col-xs-4">
+											<div th:if="${#lists.isEmpty(course)}">
+											<label>Select Course</label>
+											<p class="text-red">Please <a th:href="@{'/admincourse/insert/'+${stclass}}">insert course</a> in this class.</p>
+											</div>
+												<div th:if="!${#lists.isEmpty(course)}">
+													<div class="form-group">
+														<label>Select Course</label> <select class="form-control"
+															id="course" name="course" th:value="${course}">
+															<option th:each="course : ${course}"
+																th:value="${course.id}" th:selected="${courseExam.course}"
+																th:text="${course.title}"></option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Highest Mark</label> <input type="number"
+														th:required="required" maxlength="250" name="highestmark"
+														id="highestmark" class="form-control"
+														placeholder="Enter Course Exam Highest Mark"
+														th:value="${highestmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('highestmark')}"
+														th:errors="*{highestmark}"></span>
+												</div>
+											</div>
+
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Pass Mark</label> <input type="number"
+														th:required="required" maxlength="250" name="passmark"
+														id="passmark" class="form-control"
+														placeholder="Enter Course Exam Pass Mark"
+														th:value="${passmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('passmark')}"
+														th:errors="*{passmark}"></span>
+												</div>
+											</div>
+											</div>
+											<div class="row">
+<div class="col-xs-4">
+											<div class="form-group">
+												<label>Exam Date</label> <input type="date" th:required="required"
+													pattern="yyyy-MM-dd" class="form-control" name="examdate"
+													id="examdate" th:value="${examdate}" /> <span
+													class="help-block text-danger"
+													th:if="${#fields.hasErrors('examdate')}"
+													th:errors="*{examdate}"></span>
+											</div>
+										</div>
+										
+										<div class="col-xs-4">
+											<div class="form-group">
+												<label>Exam Time</label> <input type="text"
+												    class="form-control" name="examtime"
+													id="examtime" th:value="${examtime}" /> <span
+													class="help-block text-danger"
+													th:if="${#fields.hasErrors('examtime')}"
+													th:errors="examtime"></span>
+											</div>
+										</div><!--  -->
+</div>
+
+										
+										<div class="row">
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="submit" value="Submit" class="btn btn-primary"
+													tabindex="7" />
+											</div>
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="Reset" onclick="window.history.go(-1);"
+													value="Cancel" class="btn btn-danger" tabindex="7" />
+											</div>
+										</div>
+										<hr class="colorgraph" />
+									</form>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+					<div class="col-xs-4 col-xs-12">
+						<div class="box">
+							<div class="box-header">Recent Data</div>
+							<div class="box-body table-responsive no-padding">
+
+								<div th:if="${#lists.isEmpty(recent)}">No recent data
+									available</div>
+								<div th:if="!${#lists.isEmpty(recent)}">
+									<table class="table table-hover">
+										<thead class="cf">
+											<tr>
+												<td>Exam Title</td>
+												<td>Class</td>
+												<td>Course</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="recent : ${recent}">
+												<td th:text="${recent.exam.title}"></td>
+												<td th:text="${recent.stclass}"></td>
+												<td th:text="${recent.course.title}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+							<div class="box-footer clearfix">
+								  <a th:href="@{'/admincourseExam/courseExam/'+${stclass}+'/'+${exam.id}}" > View All</a>
+            	</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

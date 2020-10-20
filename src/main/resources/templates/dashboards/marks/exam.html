@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Marks<small>Insert Marks to <span th:text="${stclass}"></span></small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-3"></div>
+					<div class="col-md-6 col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h2 class="box-title">Select Exam</h2>
+
+							</div>
+							<!-- /.box-header -->
+						 <div class="box-body table-responsive">
+            <div th:if="${#lists.isEmpty(exam)}"> 
+              
+              <h1 class="text-red">No Data Exist</h1>
+                <p>Please <a class="text-green" th:href="@{/adminexam/insert}">Create Exam</a> before insert mark.</p>
+             </div>
+            
+            <div th:if="!${#lists.isEmpty(exam)}"> 
+              <table class="table table-hover">
+                <thead class="cf">       		
+        		     
+                  </thead>
+                  <tbody>  
+                <tr th:each="exam : ${exam}">
+                  <td th:text="${exam.title}"></td>
+                  <td th:text="${exam.year}"></td>  
+                  <td><a th:href="@{'/adminmarks/student/' +${stclass}+'/' +${exam.id}}" class="btn btn-info">Select Exam</a></td>
+                </tr>           
+                </tbody>  
+              </table>
+            </div>
+            </div>
+                        	<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

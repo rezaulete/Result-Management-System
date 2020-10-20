@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<div th:fragment="nav-left">
+		<aside class="main-sidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img th:src="@{/plugins/dist/img/user2-160x160.jpg}"
+							class="img-circle" alt="User Image" />
+					</div>
+					<div class="pull-left info">
+						<p>User Name</p>
+						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+					</div>
+				</div>
+				<!-- search form -->
+				<form action="#" method="get" class="sidebar-form">
+					<div class="input-group">
+						<input type="text" name="q" class="form-control"
+							placeholder="Search..." /> <span class="input-group-btn">
+							<button type="submit" name="search" id="search-btn"
+								class="btn btn-flat">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
+				<!-- /.search form -->
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="header">MAIN NAVIGATION</li>
+
+					<li><a href="#" th:href="@{/dashboards/index}"> Dashboard</a>
+					</li>
+					<li class="treeview"><a href="#"> <i
+							class="fa fa-dashboard"></i> <span>Home</span> <span
+							class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/adminusers/index}"><i
+									class="fa fa-circle-o"></i> User</a></li>
+						</ul></li>
+
+
+					<li class="treeview"><a href="#"> <i
+							class="fa fa-dashboard"></i> <span>Students</span> <span
+							class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/adminadmission/index}"><i
+									class="fa fa-circle-o"></i>Admission</a></li>
+							<li><a th:href="@{/adminstudent/index}"><i
+									class="fa fa-circle-o"></i>Students List</a></li>
+							<li><a th:href="@{/adminsection/index}"><i
+									class="fa fa-circle-o"></i> Section</a></li>
+							<li><a th:href="@{/adminstsession/index}"><i
+									class="fa fa-circle-o"></i> Session</a></li>
+						</ul></li>
+					<li class="treeview"><a href="#"> <i
+							class="fa fa-dashboard"></i> <span>Academic</span> <span
+							class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/adminexam/index}"><i
+									class="fa fa-circle-o"></i>Examination</a></li>
+							<li><a th:href="@{/adminmarks/index}"><i
+									class="fa fa-circle-o"></i>Marks</a></li>
+									<li><a th:href="@{/admincourse/index}"><i
+									class="fa fa-circle-o"></i>Courses</a></li>
+									
+						</ul></li>
+
+
+					<li><a th:href="@{/admincontact/index}"> <i
+							class="fa fa-files-o"></i><span>Contact</span></a></li>
+
+					<li><a th:href="@{/user/index}"> <i class="fa fa-files-o"></i><span>
+								Users </span></a></li>
+
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+			<!-- =============================================== -->
+		</aside>
+	</div>
+</div>

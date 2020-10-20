@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1 class="col-xs-6">
+					Admission<small> Student admission(<span
+						th:text="${stclass}"></span>)
+					</small>
+				</h1>
+				
+				<a class="btn btn-success btn-sm pull-right"
+											th:href="@{'/adminadmission/index/'}">Admission
+											</a>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+
+					<div class="col-md-8 col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">
+								Form
+								</h3>
+	<div class="box-tools">
+									<div class="input-group input-group-sm">
+							Class/ <a class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Nursery}">Nursery</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Kg}">Kindergarten</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class1}">1 </a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class2}">2 </a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class3}">3</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class4}">4</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class5}">5</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class6}">6</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class7}">7</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class8}">8</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class9}">9</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminadmission/insert/Class10}">10 </a>
+							</div></div>
+							</div>
+							<div class="box-body table-responsive no-padding">
+								<div th:if="!${#lists.isEmpty(Success)}">
+									<div class="alert alert-success alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">X</button>
+										<h4>
+											<i class="icon fa fa-check"></i> Success!
+										</h4>
+										Student admitted.
+									</div>
+								</div>
+								<div th:if="!${#lists.isEmpty(errormessage)}">
+									<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">X</button>
+										<h4>
+											<i class="icon fa fa-ban"></i> Alert!
+										</h4>
+										<p class="text-white" th:text="${errormessage}"></p>
+
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<form role="form" method="POST" th:object="${student}"
+										th:action="@{/adminadmission/save-student}"
+										enctype="multipart/form-data">
+										<input type="hidden" id="presentclass" name="presentclass"
+											th:value="${stclass}" /> <input type="hidden" id="activity"
+											name="activity"
+											th:value="${T(school.model.school.enumvalue.Activity).Active}" />
+
+										<div class="form-group">
+											<label>Student Name</label> <input type="text"
+												th:required="required" maxlength="250" name="name" id="name"
+												class="form-control" placeholder="Enter student name"
+												th:value="${name}" /> <span class="help-block text-danger"
+												th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+										</div>
+										
+										<div class="form-group">
+											<label>Father Name</label> <input type="text"
+												th:required="required" maxlength="250" name="fathername" id="fathername"
+												class="form-control" placeholder="Enter Father name"
+												th:value="${fathername}" /> <span class="help-block text-danger"
+												th:if="${#fields.hasErrors('fathername')}" th:errors="*{fathername}"></span>
+										</div>
+										
+										<div class="form-group">
+											<label>Mother Name</label> <input type="text"
+												th:required="required" maxlength="250" name="mothername" id="mothername"
+												class="form-control" placeholder="Enter Mother name"
+												th:value="${mothername}" /> <span class="help-block text-danger"
+												th:if="${#fields.hasErrors('mothername')}" th:errors="*{mothername}"></span>
+										</div>
+
+										<div class="row">
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Gender</label> <select class="form-control"
+														id="gender" name="gender" th:value="${gender}">
+														<option
+															th:each="gender : ${T(school.model.school.enumvalue.Gender).values()}"
+															th:value="${{gender}}"
+															th:selected="${gender == T(school.model.school.enumvalue.Gender)}"
+															th:text="${gender.name()}"></option>
+													</select>
+												</div>
+											</div>
+											
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Religion</label> <select class="form-control"
+														id="religion" name="religion" th:value="${religion}">
+														<option
+															th:each="religion : ${T(school.model.school.enumvalue.Religion).values()}"
+															th:value="${{religion}}"
+															th:selected="${religion == T(school.model.school.enumvalue.Religion)}"
+															th:text="${religion.name()}"></option>
+													</select>
+												</div>
+											</div> 
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Date of Birth</label> <input type="date" th:required="required"
+														pattern="yyyy-MM-dd" class="form-control" name="birthdate"
+														id="birthdate" th:value="${birthdate}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('birthdate')}"
+														th:errors="*{birthdate}"></span>
+												</div>
+											</div>
+										</div>
+										
+										<div class="row">
+											<div class="col-xs-4">
+												<div class="form-group">
+											<label>Roll Number</label> <input type="number"
+												th:required="required" maxlength="250" name="presentroll" id="presentroll"
+												class="form-control" placeholder="Enter student Roll"
+												th:value="${roll}" /> <span class="help-block text-danger"
+												th:if="${#fields.hasErrors('presentroll')}" th:errors="*{presentroll}"></span>
+										</div>
+											</div>
+											<div class="col-xs-4">
+											<div class="form-group">
+														<label>Session</label> <select class="form-control"
+															th:required="required" id="stsession" name="stsession"
+															th:value="${stsession}">
+															<!-- <option th:value="${currsession.id}" th:selected="${stsession}" th:text="${currsession.title}"></option> -->
+															<option th:each="stsession : ${stsession}"
+																th:value="${stsession.id}" 
+																th:selected="(${currsession.id} == ${stsession.id})"
+																th:text="${stsession.title}"></option>
+														</select>
+													</div>
+											</div>
+											</div>	
+										<div class="row">
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="submit" value="Submit" class="btn btn-primary"
+													tabindex="7" />
+											</div>
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="Reset" onclick="window.history.go(-1);"
+													value="Cancel" class="btn btn-danger" tabindex="7" />
+											</div>
+										</div>
+										<hr class="colorgraph" />
+									</form>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+					<div class="col-xs-4 col-xs-12">
+						<div class="box">
+							<div class="box-header">Recent Admitted</div>
+							<div class="box-body table-responsive no-padding">
+
+								<div th:if="${#lists.isEmpty(recent)}">No recent data
+									available</div>
+								<div th:if="!${#lists.isEmpty(recent)}">
+									<table class="table table-hover">
+										<thead class="cf">
+											<tr>
+												<td>Name</td>
+												<td>Present Class</td>
+												<td>Birth date</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="recent : ${recent}">
+												<td th:text="${recent.name}"></td>
+												<td th:text="${recent.presentclass}"></td>
+												<td th:if="!${#lists.isEmpty(recent.birthdate)}" th:text="${#dates.format(recent.birthdate, 'dd-MM-yyyy')}"></td>
+												<td th:if="${#lists.isEmpty(recent.birthdate)}">Empty</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+							<div class="box-footer clearfix">
+								<a th:href="@{'/adminstudent/student/'+${stclass}}"> View
+									All</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Section <small>All sections</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">Edit Form</h3>
+								<p class="text-red" th:text="${errormessage}"></p>
+							</div>
+							<div class="box-body table-responsive no-padding">
+								<div class="col-md-12">
+									<form role="form" method="POST" th:object="${section}"
+										th:action="@{/adminsection/update-section}"
+										enctype="multipart/form-data">
+										<input type="hidden" id="id" name="id"
+											th:value="${section.id}" />
+										<div class="form-group">
+											<label>Section Title</label> <input type="text"
+												th:required="required" maxlength="250" name="title"
+												id="title" class="form-control"
+												placeholder="Enter section title"
+												th:value="${section.title}" /> <span
+												class="help-block text-danger"
+												th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+										</div>
+
+										<input type="hidden" id="stclass" name="stclass"
+											th:value="${section.stclass}" />
+
+
+										<div class="row">
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="submit" value="Submit" class="btn btn-primary"
+													tabindex="7" />
+											</div>
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="Reset" onclick="window.history.go(-1);"
+													value="Cancel" class="btn btn-danger" tabindex="7" />
+											</div>
+										</div>
+										<hr class="colorgraph" />
+									</form>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

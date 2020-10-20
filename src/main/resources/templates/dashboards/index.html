@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Dashboard <small>Preview of simple tables</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="#">Tables</a></li>
+					<li class="active">Simple</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-lg-3 col-xs-6">
+						<!-- small box -->
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3 th:text="${Paststudent}">5044</h3>
+
+								<p>Graduated student</p>
+							</div>
+							<div class="icon">
+								<i class="glyphicon glyphicon-education"></i>
+							</div>
+							<a href="#" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-xs-6">
+						<!-- small box -->
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3 th:text="${totalstudent}">9043</h3>
+
+								<p>Total Students</p>
+							</div>
+							<div class="icon">
+								<small><i class="glyphicon glyphicon-user"></i></small>
+							</div>
+							<a href="#" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+
+
+					<div class="col-lg-3 col-xs-6">
+						<!-- small box -->
+						<div class="small-box bg-red">
+							<div class="inner">
+								<h3 th:text="${Currentstudent}">4042</h3>
+
+								<p>Present Student</p>
+							</div>
+							<div class="icon">
+								<small><i class="glyphicon glyphicon-user"></i></small>
+							</div>
+							<a href="#" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-xs-6">
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3 th:text="${totlacourse}">51</h3>
+
+								<p>Total Courses</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-person-add"></i>
+								<small><i class="glyphicon glyphicon-book"></i></small>
+							</div>
+							<a href="#" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

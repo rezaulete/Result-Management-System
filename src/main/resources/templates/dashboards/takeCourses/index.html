@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Course<small>All Courses taken</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h2 class="box-title">Table</h2>
+								<div class="box-tools">
+									<div class="input-group">
+										<div th:if="${#lists.isEmpty(takeCourse)}">
+											<a class="btn btn-success btn-sm bg-navy"
+												th:href="@{'/admintakeCourse/insert-course/'+${register.id}+'/'+${register.stclass}}">Insert
+												Course</a>
+										</div>
+										<div th:if="!${#lists.isEmpty(takeCourse)}">
+											<a class="btn btn-warning btn-sm"
+												th:href="@{'/admintakeCourse/edit-course/'+${takeCourse.id}+'/'+${takeCourse.register.id}+'/'+${takeCourse.register.stclass}}">Edit </a>
+											 <a class="btn btn-danger btn-sm pull-right"
+												th:href="@{'/admintakeCourse/remove-takeCourse/'+${takeCourse.id}}"
+												onclick="return confirm('Are you sure you want to delete this item?');">
+												Delete</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body table-responsive no-padding">
+								<div th:if="${#lists.isEmpty(takeCourse)}">
+									<h1 class="text-red">No Course Exist</h1>
+								</div>
+								<div th:if="!${#lists.isEmpty(takeCourse)}">
+									<table class="table table-hover">
+										<thead class="cf">
+											<tr>
+												<td>id</td>
+												<td>Title</td>
+												<td>Code</td>
+												<td>Type</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="takeCourses : ${takeCourse.course}">
+												<td th:text="${takeCourses.id}"></td>
+												<td th:text="${takeCourses.title}"></td>
+												<td th:text="${takeCourses.code}"></td>
+												<td th:text="${takeCourses.coursetype}"></td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+				</div>
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

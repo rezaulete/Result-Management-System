@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--<div th:fragment="footer" class="text-center">  -->
+    	<section id="footer">
+   	    <div class="row">
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h3>Address</h3>
+					<div th:if="${#lists.isEmpty(organization)}"> 
+					<ul class="list-unstyled quick-links text-white">
+						<li>IT Garden , 118(1st floor),</li>
+						 <li>Lake Circus Kalabagan, Dhaka 1205</li> 
+						<li>Contact:01912 138524</li>
+						<li>Email: itgarden2007@gmail.com</li>		
+					</ul>
+					</div>
+					
+				<div th:if="!${#lists.isEmpty(organization)}"> 
+					<ul class="list-unstyled quick-links text-white">
+						<li th:if="!${#lists.isEmpty(organization.addresslineone)}"><span th:text="${organization.addresslineone}"></span></li>
+						<li th:if="${#lists.isEmpty(organization.addresslineone)}">No address given</li>
+						<li th:if="!${#lists.isEmpty(organization.addresslinetwo)}"><span th:text="${organization.addresslinetwo}"></span></li>
+						<li th:if="!${#lists.isEmpty(organization.phone)}">Contact: <span th:text="${organization.phone}"></span></li>
+						<li th:if="${#lists.isEmpty(organization.phone)}">Contact: No contact given</li>
+						<li th:if="!${#lists.isEmpty(organization.email)}">Email: <span th:text="${organization.email}"></span></li>		
+						<li th:if="${#lists.isEmpty(organization.email)}">Email: No Email given</li>		
+					</ul> 
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h3>Office Time</h3>
+					<div th:if="${#lists.isEmpty(organization)}"> 
+					<ul class="list-unstyled quick-links text-white">
+						<li>9.00 AM-5.00 PM</li>
+						<li>Closed : Friday</li>
+						<li>and all public holidays</li>	
+				
+					</ul>
+					</div>
+					
+					<div th:if="!${#lists.isEmpty(organization)}"> 
+					<ul class="list-unstyled quick-links text-white">
+						<li th:if="!${#lists.isEmpty(organization.officetime)}"><span th:text="${organization.officetime}"></span></li>
+						<li th:if="${#lists.isEmpty(organization.officetime)}">9.00 AM-5.00 PM</li>
+						<li th:if="!${#lists.isEmpty(organization.offday)}">Closed : <span th:text="${organization.offday}"></span></li>
+						<li th:if="${#lists.isEmpty(organization.offday)}">Closed : Friday</li>
+						<li>and all public holidays</li>	
+				    </ul>
+					</div>
+					
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h3>Quick links</h3>
+					<ul class="list-unstyled quick-links">
+						<li><a th:href="@{/}"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a th:href="@{/academic/notice}"><i class="fa fa-angle-double-right"></i>Notice</a></li>
+						<li><a th:href="@{/academic/examresult}"><i class="fa fa-angle-double-right"></i>Result</a></li>
+						<li><a th:href="@{/frontend/gallery}"><i class="fa fa-angle-double-right"></i>Gallery</a></li>
+					</ul>
+				</div>
+				
+				
+				<!-- ORGANIZATION Social Media PART-->
+				 <div class="text-center center-block">
+				 <div th:if="!${#lists.isEmpty(organization)}"> 
+                        <a href="https://www.facebook.com/" th:href="@{${organization.facebookPage}}" th:if="!${#lists.isEmpty(organization.facebookPage)}"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	                    <a href="https://www.facebook.com/" th:href="@{https://www.facebook.com/}" th:if="${#lists.isEmpty(organization.facebookPage)}"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	                     
+	                    <a href="https://twitter.com/" th:href="@{${organization.twitterPage}}" th:if="!${#lists.isEmpty(organization.twitterPage)}"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+	                    <a href="https://twitter.com/" th:href="@{https://twitter.com/}" th:if="${#lists.isEmpty(organization.twitterPage)}"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+	                   
+	                    <a href="https://www.linkedin.com/" th:href="@{${organization.linkinPage}}" th:if="!${#lists.isEmpty(organization.linkinPage)}"><i id="social-gp" class="fa fa-linkedin-square fa-3x social"></i></a>
+	                    <a href="https://www.linkedin.com/" th:href="@{https://www.linkedin.com/}" th:if="${#lists.isEmpty(organization.linkinPage)}"><i id="social-gp" class="fa fa-linkedin-square fa-3x social"></i></a>
+	                    
+	                    <a href="https://www.youtube.com/" th:href="@{${organization.youtubePage}}" th:if="!${#lists.isEmpty(organization.youtubePage)}"><i id="social-em" class="fa fa-youtube-square fa-3x social"></i></a>
+	                    <a href="https://www.youtube.com/" th:href="@{https://www.youtube.com/}" th:if="${#lists.isEmpty(organization.youtubePage)}"><i id="social-em" class="fa fa-youtube-square fa-3x social"></i></a>
+               </div>
+               
+     
+              <div th:if="${#lists.isEmpty(organization)}"> 
+              
+                        <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	                    <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+	                    <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-linkedin-square fa-3x social"></i></a>
+	                    <a href="https://www.youtube.com/"><i id="social-em" class="fa fa-youtube-square fa-3x social"></i></a>
+               </div>
+             </div> 
+							
+			</div>						
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					<p class="h6"> Copyright &copy; 2016. All Rights Reserved. Design and Developed by: <a href="http://www.itgardenltd.com" target="_blank" >IT Garden</a></p>
+				</div>			
+			</div>	
+			</div>
+			</section>	
+			</div>

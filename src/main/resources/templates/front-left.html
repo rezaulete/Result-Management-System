@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div  th:fragment="nav-left">
+
+        <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"> Important Link </h3>
+        </div>
+
+        <div class="box-body">
+       <div th:if="!${#lists.isEmpty(links)}"> 
+                                  <table class="table">
+                           <tr th:each="links : ${links}">
+                           <td><a th:href="@{${links.url}}" target="_blank"><span th:text="${links.name}"></span></a></td>
+                           </tr>
+                           </table>
+              </div> 
+             <div th:if="${#lists.isEmpty(links)}"> 
+                <table class="table">
+                           <tr>
+                           <td><a href="https://www.google.com.bd/" target="_blank">Google</a></td>
+                           </tr>
+                           <tr>
+                           <td><a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a></td>
+                           </tr>
+                           <tr>
+                           <td><a href="https://www.youtube.com/channel/UCZZMqPT5tSW2eZJz0rW3WVQ" target="_blank">Youtube</a></td>
+                           </tr>
+                           <tr>
+                           <td><a href="http://www.lifehacker.co.uk/" target="_blank">Life Hacker</a></td>
+                           </tr>
+                           <tr>
+                           <td><a href="https://www.khanacademy.org/" target="_blank">Khan Academy</a></td>
+                           </tr>
+                          </table> 
+             </div> 
+           </div>
+         </div>
+</div>
+</div>

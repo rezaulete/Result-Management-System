@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+				Routine<small>All course exams</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+				<div class="col-xs-2"></div>
+				 <div class="col-md-8 col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">Edit Form</h3>
+								<p class="text-red" th:text="${errormessage}"></p>
+							</div>
+							<div class="box-body table-responsive no-padding">
+								<div class="col-md-12">
+									<form role="form" method="POST" th:object="${courseExam}"
+										th:action="@{/admincourseExam/update-courseExam}"
+										enctype="multipart/form-data">
+										<input type="hidden" id="id" name="id"
+											th:value="${courseExam.id}" />	<input type="hidden" id="stclass" name="stclass"
+											th:value="${courseExam.stclass}" /> <input type="hidden" id="exam"
+											name="exam" th:value="${courseExam.exam.id}" />
+
+									
+										<div class="row">
+											<div class="col-xs-4">
+											<div th:if="${#lists.isEmpty(course)}">
+											<label>Select Course</label>
+											<p class="text-red">Please <a th:href="@{'/admincourse/insert/'+${stclass}}">insert course</a> in this class.</p>
+											</div>
+												<div th:if="!${#lists.isEmpty(course)}">
+													<div class="form-group">
+														<label>Select Course</label> <select class="form-control"
+															id="course" name="course" th:value="${courseExam.course}">
+															<option th:each="course : ${course}"
+																th:value="${course.id}" th:selected="${courseExam.course}"
+																th:text="${course.title}"></option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Highest Mark</label> <input type="number"
+														th:required="required" maxlength="250" name="highestmark"
+														id="highestmark" class="form-control"
+														placeholder="Enter Course Exam Highest Mark"
+														th:value="${courseExam.highestmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('highestmark')}"
+														th:errors="*{highestmark}"></span>
+												</div>
+											</div>
+
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Pass Mark</label> <input type="number"
+														th:required="required" maxlength="250" name="passmark"
+														id="passmark" class="form-control"
+														placeholder="Enter Course Exam Pass Mark"
+														th:value="${courseExam.passmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('passmark')}"
+														th:errors="*{passmark}"></span>
+												</div>
+											</div>
+											</div>
+											<div class="row">
+<div class="col-xs-4">
+											<div class="form-group">
+												<label>Exam Date</label> <input type="date" th:required="required"
+													pattern="yyyy-MM-dd" class="form-control" name="examdate"
+													id="examdate" th:value="${courseExam.examdate}" /> <span
+													class="help-block text-danger"
+													th:if="${#fields.hasErrors('examdate')}"
+													th:errors="*{examdate}"></span>
+											</div>
+										</div>
+										
+										<div class="col-xs-4">
+											<div class="form-group">
+												<label>Exam Time</label> <input type="text"
+												    class="form-control" name="examtime"
+													id="examtime" th:value="${courseExam.examtime}" /> <span
+													class="help-block text-danger"
+													th:if="${#fields.hasErrors('examtime')}"
+													th:errors="examtime"></span>
+											</div>
+										</div>
+										</div>
+
+										<div class="row">
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="submit" value="Submit" class="btn btn-primary"
+													tabindex="7" />
+											</div>
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="Reset" onclick="window.history.go(-1);"
+													value="Cancel" class="btn btn-danger" tabindex="7" />
+											</div>
+										</div>
+										<hr class="colorgraph" />
+									</form>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+<div class="col-xs-2"></div>
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

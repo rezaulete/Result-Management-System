@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                 <h1>Exam<small>All exams</small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+                 <div class="col-xs-12">
+                   <div class="box">
+                     <div class="box-header">
+                        <h2 class="box-title">Table</h2>
+                           <div class="box-tools">
+                              <div class="input-group input-group-sm">     
+                    <a class="btn btn-success btn-sm bg-navy" th:href="@{/adminexam/insert}">Create Exam</a>               
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+            <div th:if="${#lists.isEmpty(exam)}"> 
+              
+              <h1 class="text-red">No Data Exist</h1>
+                <p>Please Click <a class="text-green" th:href="@{/adminexam/insert}">Create Exam</a> button to Create a new exam.</p>
+             </div>
+            
+            <div th:if="!${#lists.isEmpty(exam)}"> 
+              <table class="table table-hover">
+                <thead class="cf">       		
+        		     <tr>
+        		        <td>id</td>
+        				<td>Title</td>
+        				<td>Year</td>
+        				<td>Start Date</td>
+        				<td>Action</td>     				
+                      </tr>
+                  </thead>
+                  <tbody>  
+                <tr th:each="i : ${#numbers.sequence(exam.size() - 1, 0, -1)}">
+                <td th:text="${exam[i].id}"></td>
+                  <td th:text="${exam[i].title}"></td>
+                  <td th:text="${exam[i].year}"></td>  
+                  <td th:text="${exam[i].startdate}"></td>
+                  <td><a th:href="@{'/admincourseExam/courseExam/' +${exam[i].id}}" class="btn btn-info">Routine </a>
+                      <a th:href="@{'/adminexam/edit-exam?id=' +${exam[i].id}}" class="btn btn-warning">Edit </a>
+                      <a th:href="@{'/adminexam/delete-exam?id=' +${exam[i].id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</a></td>
+                </tr>           
+                </tbody>  
+              </table>
+            </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+                
+               </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+</div>

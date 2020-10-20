@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Marks<small>All Courses taken</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h2 class="box-title">Table</h2>
+								<div class="box-tools">
+									<div class="input-group input-group-sm">
+										<div th:if="${#lists.isEmpty(courseExam)}">No exam
+											available</div>
+										<div th:if="!${#lists.isEmpty(courseExam)}">
+										     <a class="btn btn-info btn-sm" th:href="@{'/adminmarks/view-marks/'+${exam.id}+'/'+${register.id}}">View Marks</a>               
+                 	</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body table-responsive">
+								<div th:if="${#lists.isEmpty(courseExam)}">
+
+									<h1>No Data Exist</h1>
+								</div>
+								<div th:if="!${#sets.isEmpty(courseExam)}">
+
+									<h2 class="text-success" th:text="${succcess}"></h2>
+									<h2 class="text-success" th:text="${grade}"></h2>
+									<form role="form" method="POST" th:object="${marks}"
+										th:action="@{/adminmarks/save-marks}"
+										enctype="multipart/form-data">
+										
+										<input type="hidden" id="student" name="student" th:value="${student.id}"/>
+										<input type="hidden" id="register" name="register" th:value="${register.id}"/>
+										<input type="hidden" id="exam" name="exam" th:value="${exam.id}"/>
+									
+										<div class="row">
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Select Course</label> <select class="form-control"
+														id="courseExam" name="courseExam" th:value="${courseExam}">
+														<option th:each="courseExam : ${courseExam}"
+															th:value="${courseExam.id}" th:selected="${courseExam}"
+															th:text="${courseExam.course.title}"></option>
+													</select>
+												</div>
+											</div>
+
+											
+										</div>
+										<div class="row">
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Written Mark</label> <input type="number"
+														name="writtenmark" th:required="required" maxlength="250"
+														id="writtenmark" class="form-control"
+														placeholder="Enter student written marks"
+														th:value="${marks.writtenmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('writtenmark')}"
+														th:errors="*{writtenmark}"></span>
+												</div>
+											</div>
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Objective Mark</label> <input type="number"
+														name="objectivemark" th:required="required"
+														maxlength="250" id="objectivemark" class="form-control"
+														placeholder="Enter student objective marks"
+														th:value="${marks.objectivemark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('objectivemark')}"
+														th:errors="*{objectivemark}"></span>
+												</div>
+											</div>
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Lab/Quiz Mark</label> <input type="number"
+														name="labmark" th:required="required" maxlength="250"
+														id="labmark" class="form-control"
+														placeholder="Enter student lab marks"
+														th:value="${marks.labmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('labmark')}"
+														th:errors="*{labmark}"></span>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="submit" value="Submit" class="btn btn-primary"
+													tabindex="7" />
+											</div>
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="Reset" onclick="window.history.go(-1);"
+													value="Cancel" class="btn btn-danger" tabindex="7" />
+											</div>
+										</div>
+										<hr class="colorgraph" />
+									</form>
+
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+				</div>
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

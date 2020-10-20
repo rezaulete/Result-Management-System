@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Student<small>students (<span th:text="${stclass}"></span>)
+					</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h2 class="box-title">Table</h2>
+								<div class="box-tools">
+									<div class="input-group input-group-sm">
+										Class/ <a class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Nursery/'+${exam.id}}">Nursery</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Kg/'+${exam.id}}">Kindergarten</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class1/'+${exam.id}}">1 </a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class2/'+${exam.id}}">2 </a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class3/'+${exam.id}}">3</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class4/'+${exam.id}}">4</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class5/'+${exam.id}}">5</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class6/'+${exam.id}}">6</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class7/'+${exam.id}}">7</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class8/'+${exam.id}}">8</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class9/'+${exam.id}}">9</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{'/adminmarks/student/Class10/'+${exam.id}}">10 </a> <a
+											class="btn btn-success btn-sm bg-navy"
+											th:href="@{/adminstudent/insert}">Insert Data</a>
+									</div>
+								</div>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body table-responsive no-padding">
+								<div th:if="${#lists.isEmpty(student)}">
+									<h1>No Data Exist</h1>
+								</div>
+
+								<div th:if="!${#lists.isEmpty(student)}">
+									<table class="table table-hover">
+										<thead class="cf">
+											<tr>
+												<td>Name</td>
+												<td>Action</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="student: ${student}">
+												<td th:text="${student.name}"></td>
+												<td>
+												<a th:href="@{'/adminmarks/view-marks/'+${exam.id}+'/'+${student.id}}"
+													class="btn btn-info">View Marks</a>
+													<a th:href="@{'/adminmarks/add-marks/'+${stclass}+'/'+${exam.id}+'/' +${student.id}}"
+													class="btn btn-success btn-sm bg-navy">Add Marks</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

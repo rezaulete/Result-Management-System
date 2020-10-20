@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Register <small>Student Registration (<span
+						th:text="${student.name}"></span>)
+					</small>
+				</h1>
+			</section>
+
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+						<div class="box-header">
+								 <a class="btn btn-success" onclick="window.history.go(-1);"><span class="glyphicon glyphicon-arrow-left"></span> Go Back</a>  
+								<div class="box-tools">
+									<div class="input-group input-group-sm">
+							Class/ <a class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Nursery}">Nursery</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Kg}">Kindergarten</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class1}">1 </a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class2}">2 </a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class3}">3</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class4}">4</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class5}">5</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class6}">6</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class7}">7</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class8}">8</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class9}">9</a> <a
+											class="btn btn-default btn-sm"
+											th:href="@{/adminstudent/student/Class10}">10 </a>
+							</div></div></div>
+							<div class="box-body ">
+							<h3><span th:text="${student.name}"></span>
+					       	</h3>
+							<p> Father Name: <span th:text="${student.fathername}"></span><br/>
+							Mother Name: <span th:text="${student.mothername}"></span><br/>
+							Date of Birth: <span th:text="${#dates.format(student.birthdate, 'dd-MM-yyyy')}"></span><br/>
+					       	</p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h2 class="box-title">Table</h2>
+								<div class="box-tools">
+									<div class="input-group input-group-sm">
+										<a class="btn btn-success btn-sm bg-navy"
+											th:href="@{'/adminregister/insert/'+${student.id}+'/'+${student.presentclass}}">Insert
+											Data</a>
+									</div>
+								</div>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body table-responsive">
+								<div th:if="${#lists.isEmpty(register)}">
+
+									<h1 class="text-red">No Registration Data Exist</h1>
+								</div>
+								<div th:if="!${#lists.isEmpty(errormessage)}">
+									<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">X</button>
+										<h4>
+											<i class="icon fa fa-ban"></i> Alert! <span
+												th:text="${errormessage}"></span>
+										</h4>
+										<p class="text-white" th:text="${error}"></p>
+									</div>
+								</div>
+								<div th:if="!${#lists.isEmpty(register)}">
+									<table class="table table-hover">
+										<thead class="cf">
+											<tr>
+
+												<td>Session</td>
+												<td>Roll No</td>
+												<td>Registration No</td>
+												<td>Class</td>
+												<td>Section</td>
+												<td>Group</td>
+												<td>Version</td>
+												<td>Courses</td>
+												<td>Action</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="register : ${register}">
+												<td th:if="!${#lists.isEmpty(register.stsession)}"  th:text="${register.stsession.title}"></td>
+												<td th:if="${#lists.isEmpty(register.stsession)}" >none</td>
+												<td th:text="${register.rollno}"></td>
+												<td th:text="${register.registration}"></td>
+												<td th:text="${register.stclass}"></td>
+												<td th:if="!${#lists.isEmpty(register.section)}"  th:text="${register.section.title}"></td>
+												<td th:if="${#lists.isEmpty(register.section)}">none</td>
+												<td th:text="${register.groups}"></td>
+												<td th:text="${register.version}"></td>
+												<td><a
+													th:href="@{'/admintakeCourse/view-course/' +${register.id}}"
+													class="btn btn-success btn-sm bg-navy">Courses</a></td>
+												<td><a
+													th:href="@{'/adminregister/edit-register?id=' +${register.id}}"
+													class="btn btn-warning">Edit</a> <a
+													th:href="@{'/adminregister/delete-register?id=' +${register.id}}"
+													onclick="return confirm('Are you sure you want to delete this item?');"
+													class="btn btn-danger">Delete</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+
+							<div class="box-footer">
+		
+							</div>
+
+
+
+
+							<!--      <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li ><a href="#">&#60;&#60;</a></li>
+                <li  th:each="i : ${#numbers.sequence(0,student.totalPages() - 1)}">
+                
+                <a th:href="@{'/adminstudent/student/'+${schclass}+'/'+${i}}"
+        th:text="${i}"
+        th:classappend="${page}==${student.totalPages} + 1 ? 'active'"></a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&#62;&#62;</a></li>
+              </ul>
+            </div> 
+            
+           <div th:if="${student.totalPages} > 0" class="pagination"
+    th:each="pageNumber : ${page}">
+    <a th:href="@{/listBooks(size=${bookPage.size}, page=${pageNumber})}"
+        th:text="${pageNumber}"
+        th:class="${pageNumber==student.number + 1} ? active"></a>
+</div>-->
+
+
+
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

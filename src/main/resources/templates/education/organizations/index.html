@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="front-layout-inner-page">
+    <div layout:fragment = "main_content">
+
+        <!-- Main content -->
+        <div class="col-sm-9">
+             <div class="box box-warning box-solid ">
+                <div class="box-header with-border">
+                 <div th:if="!${#lists.isEmpty(Page)}"> 
+                     <h3 class="box-title" th:text="${Page.aboutustitle}"></h3>
+                  </div> 
+                  <div th:if="${#lists.isEmpty(Page)}">  
+                    <h3 class="box-title"> History</h3>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="col-sm-12">
+                    <div th:if="!${#lists.isEmpty(Page)}"> 
+                     <img class="img-responsive img-thumbnail" align="left" style="margin-right:10px;" th:src="@{'/images/AboutUsImage/'+${Page.picFile}}" alt="Images"/>
+                    </div> 
+                    
+                    <div th:if="${#lists.isEmpty(Page)}"> 
+                    <img class="img-responsive img-thumbnail" align="left" style="margin-right:10px;" th:src="@{/school-image/School_History.jpg}" />
+                    </div>
+                     </div>
+                     <div class="col-sm-12">
+                    <div class="text-justify">
+                    <div th:if="!${#lists.isEmpty(Page)}"> 
+                    <h1 class="text-green">Our School History</h1>
+                    <p class="text-large" th:text="${Page.description}"></p>
+                    </div> 
+                     <div th:if="${#lists.isEmpty(Page)}"> 
+                    <p class="text-large"> School building and recreation area in England Chilean schoolchildren in school uniform during a class photograph, 2002 A school is an institution designed to provide learning spaces and learning environments for the teaching of students or pupils under the direction of teachers. Most countries have systems of formal education, which is commonly compulsory.In these systems, students progress through a series of schools. The names for these schools vary by country but generally include primary school for young children and secondary school for teenagers who have completed primary education. An institution where higher education is taught, is commonly called a university college or university.</p>
+                    <p class="text-large">In addition to these core schools, students in a given country may also attend schools before and after primary and secondary education. Kindergarten or pre-school provide some schooling to very young children. University, vocational school, college or seminary may be available after secondary school. A school may be dedicated to one particular field, such as a school of economics or a school of dance. Alternative schools may provide nontraditional curriculum and methods.</p>   
+                    </div>
+                    </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.box -->
+        <div class="col-sm-3">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> About us</h3>
+                </div>
+
+                <div class="box-body">
+                    <table class="table">
+                        <tr><td><a th:href="@{/aboutus/history}">History</a></td>
+                        </tr>
+                        <tr><td> <a th:href="@{/aboutus/why-study-at-our-school}">Why study at Our School</a> </td>
+                        </tr>
+                        <tr> <td><a  th:href="@{/aboutus/infrastructure}">Infrastructure</a></td>
+                        </tr>
+                        <tr> <td><a  th:href="@{/aboutus/achievements}">Achievements</a></td>
+                        </tr>
+                    </table>     
+                </div>
+            </div>
+
+            <div class="box box-warning">
+                <div class="box-body bg-yellow">
+                    <h1 class="text-center">  
+                        
+                        à¦‡à¦•à¦°à¦¾ à¦¬à¦¿à¦¸à¦®à¦¿à¦•à¦¾à¦²à§�à¦²à¦¾à¦œà§€ à¦–à¦¾à¦²à¦¾à¦• - à¦ªà§œ à¦¤à§‹à¦®à¦¾à¦° à¦ªà§�à¦°à¦­à§�à¦° à¦¨à¦¾à¦®à§‡, à¦¯à¦¿à¦¨à¦¿ à¦¤à§‹à¦®à¦¾à¦•à§‡ à¦¸à§ƒà¦·à§�à¦Ÿà¦¿ à¦•à¦°à§‡à¦›à§‡à¦¨
+                        à¦†à¦² à¦•à§�à¦°à¦†à¦¨
+                        
+                    </h1>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+ </div>
+

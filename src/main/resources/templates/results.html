@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>age</th>
+                   </tr>
+            </thead>
+            <tbody>
+                <tr th:each="person, status : ${persons}">
+                    <td th:text="${status.count}">1</td>
+                    <td th:text="${person.name}">Name</td>
+                    <td th:text="${person.age}">age</td>
+                </tr>
+            </tbody>
+        </table>
+        </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin-layout">
+	<div layout:fragment="main_content">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Courses<small>All Courses taken</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h2 class="box-title">Insert</h2>
+								<div class="box-tools">
+									<div class="input-group input-group-sm">
+										<a class="btn btn-success btn-sm bg-navy"
+											th:href="@{/admintakeCourse/insert}">Insert Data</a>
+									</div>
+								</div>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body table-responsive no-padding">
+								<div th:if="${#lists.isEmpty(subject)}">
+
+									<h1 class="text-red">No Data Exist</h1>
+								</div>
+
+								<div th:if="!${#lists.isEmpty(subject)}">
+
+
+									<form role="form" method="POST" th:object="${takeCourse}"
+										th:action="@{/admintakeCourse/save-takeCourse}">
+										<input type="hidden" id="register" name="register"
+											th:value="${register.id}" />
+										<table class="table table-hover table-striped">
+
+											<tbody>
+												<tr class="bg-green">
+													<td><b>(Mandatory)</b></td>
+												</tr>
+												<tr th:each="mandetorysubject : ${mandetorysubject}">
+													<td><input type="checkbox" name="course"
+														th:value="${mandetorysubject.id}" checked="checked" /></td>
+													<td th:text="${mandetorysubject.title}"></td>
+													<td th:text="${mandetorysubject.code}"></td>
+
+												</tr>
+											</tbody>
+											<tbody>
+
+												<tr class="bg-green" th:if="${not #lists.isEmpty(religioussubject)}">
+													<td><b>(Religious)</b></td>
+												</tr>
+												<tr th:each="religioussubject : ${religioussubject}">
+													<td><input th:required="required" type="radio"
+														name="course" th:value="${religioussubject.id}" /></td>
+													<td th:text="${religioussubject.title}"></td>
+													<td th:text="${religioussubject.code}"></td>
+												</tr>
+
+											</tbody>
+											<tr class="bg-green"
+												th:if="${not #lists.isEmpty(optionalsubject)}">
+												<td><b>(Optional)</b></td>
+											</tr>
+											<tbody>
+
+												<tr th:each="optionalsubject : ${optionalsubject}">
+													<td><input class="form-check-input" type="checkbox"
+														name="course" id="optionalsubject"
+														th:value="${optionalsubject.id}" /></td>
+													<td th:text="${optionalsubject.title}"></td>
+													<td th:text="${optionalsubject.code}"></td>
+												</tr>
+											</tbody>
+											<tr class="bg-green"
+												th:if="${not #lists.isEmpty(fourthsubject)}">
+												<td><b>(Forth Subject)</b></td>
+											</tr>
+
+											<tbody>
+												<tr th:each="fourthsubject : ${fourthsubject}">
+													<td><input class="form-check-input" type="checkbox"
+														name="course" id="fourthsubject"
+														th:value="${fourthsubject.id}" /></td>
+													<td th:text="${fourthsubject.title}"></td>
+													<td th:text="${fourthsubject.code}"></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="row">
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="submit" value="Submit" class="btn btn-primary"
+													tabindex="7" />
+											</div>
+											<div class="col-xs-12 col-md-6 text-center">
+												<input type="Reset" onclick="window.history.go(-1);"
+													value="Cancel" class="btn btn-danger" tabindex="7" />
+											</div>
+										</div>
+										<hr class="colorgraph" />
+									</form>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>

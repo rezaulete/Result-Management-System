@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html style="height: auto; min-height: 100%;"
+xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   
+        <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Welcome To Our School Web Site</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+        <!-- Font Awesome -->
+      
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+        <link th:href="@{/webjars/adminlte/2.3.11/dist/css/AdminLTE.min.css}"   rel="stylesheet" type="text/css"  />
+        <!-- Theme style -->
+        <link th:href="@{/plugins/admin-lte/dist/css/AdminLTE.min.css}" href="/plugins/admin-lte/dist/css/AdminLTE.min.css"  rel="stylesheet" type="text/css"  />
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link th:href="@{/webjars/adminlte/2.3.11/dist/css/skins/_all-skins.min.css}" href="/plugins/admin-lte/dist/css/skins/_all-skins.min.css"  rel="stylesheet" type="text/css"  />
+        <link th:href="@{/css/apps.css}" rel="stylesheet" type="text/css"  />
+         <link th:href="@{/css/schoolstyle.css}" rel="stylesheet" type="text/css"  />
+         <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css"  />
+    </head>
+    <body class="skin-green-light layout-top-nav layout-boxed">
+
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <header class="main-header">
+                <div th:replace="front-header">
+                    
+                    <!-- Header  -->
+                    
+                </div>
+            </header>
+  
+
+            <div class="content-wrapper">
+                <div class="row" style="margin-bottom: 10px;">&nbsp;</div>
+                  <section class="row">  
+                    <div class="col-sm-12">
+                   
+                        <div   layout:fragment="main_content">
+                            main Content
+                        </div>
+                    
+                    </div>
+                </section>            
+
+            </div>
+            <div class="row"></div>
+            <!-- /.content-wrapper -->
+                <div th:replace="front-footer">        
+
+                </div>
+          
+
+            <!-- /.control-sidebar -->
+            <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script type="text/javascript"  th:src="@{/plugins/jQuery/jquery-2.2.3.min.js}">...</script>
+        <!-- Bootstrap 3.3.6 -->
+        <script type="text/javascript"  th:src="@{/plugins/bootstrap/js/bootstrap.min.js}">...</script>
+
+        <script type="text/javascript"  th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+        <script type="text/javascript"  th:src="@{/plugins/datatables/dataTables.bootstrap.min.js}"></script>
+        <!-- SlimScroll -->
+        <script type="text/javascript"  th:src="@{/plugins/slimScroll/jquery.slimscroll.min.js}">...</script>
+        <!-- FastCtlick -->
+        <script type="text/javascript"  th:src="@{/plugins/fastclick/fastclick.js}">...</script>
+        <!-- AdminLTE App -->
+        <script  type="text/javascript" th:src="@{/plugins/admin-lte/dist/js/app.min.js}">...</script>
+        <!-- AdminLTE for demo purposes -->
+        <script type="text/javascript"  th:src="@{/plugins/admin-lte/dist/js/demo.js}">...</script>
+        <!--<script th:src="@{/webjars/datatables/1.10.6/js/jquery.dataTables.js}">...</script>-->
+        <script type="text/javascript " th:src="@{/js/apps.js}">...</script>
+    </body>
+</html>

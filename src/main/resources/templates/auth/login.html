@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Shishu Polli Plus</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <link th:href="@{/webjars/adminlte/2.3.11/dist/css/AdminLTE.min.css}"   rel="stylesheet" type="text/css"  />
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link th:href="@{/webjars/adminlte/2.3.11/dist/css/skins/_all-skins.min.css}"   rel="stylesheet" type="text/css"  />
+        <link th:href="@{/css/apps.css}"   rel="stylesheet" type="text/css"  />
+     
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
+    </head>
+    <body class="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="#"><b>IT  </b>Garden</a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <h3>   <span  class="help-block has-error text-red text-center" th:if="${logout}" th:text="${logout}">First Name Error</span></h3>
+                <div class="help-block has-error text-red text-center" th:if="${param.error}">
+                    <h3>   Invalid Username or Password.</h3>
+                </div>
+                <h4>Please Sign In</h4>
+                <form th:action="@{/users/login}" method="post">
+                    <div class="form-group has-feedback">
+                        <span th:text="${log_out}"></span>
+                        <input type="text"  name="username" class="form-control" placeholder="Email" />
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password"  name="password" class="form-control" placeholder="Password" />
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <div class="social-auth-links text-center">
+                </div>
+                <!-- /.social-auth-links -->
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script   type="text/javascript"  th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>   
+        <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+        <script th:src="@{/webjars/adminlte/2.3.11/dist/js/app.min.js}">...</script>
+        <script th:src="@{/webjars/datatables/1.10.6/datatables.js}"></script>
+        <script th:src="@{/js/apps.js}">...</script>
+        <script th:src="@{/js/bootstrap_date.js}">...</script>
+    </body>
+</html>

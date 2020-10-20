@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                 <h1>CourseExam<small>All courseExams</small>
+                </h1>                         
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+                 <div class="col-xs-3">
+                 </div>
+              <div class="col-md-6 col-xs-12">
+                   <div class="box">
+                     <div class="box-header">
+                        <h2 class="box-title">CourseExam Class</h2>
+                
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive text-center">
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class10/'+${exam.id}}"> Class 10  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class9/'+${exam.id}}"> Class 9  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class8/'+${exam.id}}"> Class 8  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class7/'+${exam.id}}"> Class 7  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class6/'+${exam.id}}"> Class 6  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class5/'+${exam.id}}"> Class 5  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class4/'+${exam.id}}"> Class 4  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class3/'+${exam.id}}"> Class 3  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class2/'+${exam.id}}"> Class 2  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Class1/'+${exam.id}}"> Class 1  </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Kg/'+${exam.id}}"> Kindergarten </a>
+              <a class="btn btn-block btn-google" th:href="@{'/admincourseExam/courseExam/Nursery/'+${exam.id}}"> Nursery  </a>
+              
+             </div>
+        
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+                
+               </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+</div>

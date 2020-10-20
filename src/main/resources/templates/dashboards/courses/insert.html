@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                 <h1>Course <small>All courses(<span th:text="${stclass}"></span>)</small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+                 <div class="col-xs-2">
+                 </div>
+              <div class="col-md-8 col-xs-12">
+                   <div class="box">
+                     <div class="box-header">
+              <h3 class="box-title">Insert Form</h3> <p class="text-red" th:text="${errormessage}"></p>
+            </div>          
+            <div class="box-body table-responsive no-padding">
+                           <div class="col-md-12">                            
+                                 <form role="form" method="POST" th:object="${course}" th:action="@{/admincourse/save-course}" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                    <label>Course Title</label>
+                                    <input type="text" th:required="required" maxlength="250"  name="title" id="title" class="form-control" placeholder="Enter course title" th:value="${title}"/>
+                                    <span class="help-block text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                                    </div>
+                                    
+                                    <div class="row">
+                                    <div class="col-xs-4">
+                                    <div class="form-group">
+                                    <label>Course Code (First Paper)</label>
+                                    <input type="number" th:required="required" maxlength="250" name="firstcode" id="firstcode" class="form-control" placeholder="Enter course code(1st paper/all paper)" th:value="${firstcode}"/>
+                                    <span class="help-block text-danger" th:if="${#fields.hasErrors('firstcode')}" th:errors="*{firstcode}"></span>
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-4">
+                                    <div class="form-group">
+                                    <label>Course Code (Second Paper)</label>
+                                    <input type="number" maxlength="250" name="secondcode" id="secondcode" class="form-control" placeholder="Enter course code 2nd paper" th:value="${secondcode}"/>
+                                    <span class="help-block text-danger" th:if="${#fields.hasErrors('secondcode')}" th:errors="*{secondcode}"></span>
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-4">
+                                    <div class="form-group">
+                                    <label>Course Code (Third Paper)</label>
+                                    <input type="number" maxlength="250" name="thirdcode" id="thirdcode" class="form-control" placeholder="Enter course code 3rd paper" th:value="${thirdcode}"/>
+                                    <span class="help-block text-danger" th:if="${#fields.hasErrors('thirdcode')}" th:errors="*{thirdcode}"></span>
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-4">
+                                    <div class="form-group">
+                                    <label>Groups</label>
+                                    <select class="form-control" id="groups" name="groups" th:value="${groups}">
+			                               <option th:each="groups : ${T(school.model.school.enumvalue.Groups).values()}"
+                                              th:value="${{groups}}"
+                                              th:selected="${groups == T(school.model.school.enumvalue.Groups)}"
+                                              th:text="${groups.name()}">
+                                          </option>
+                                    </select>                         
+                                    </div>
+                                    </div>
+                                   
+                                  <input type="hidden" id="stclass" name="stclass" th:value="${stclass}"/>
+                                    
+                                    <div class="col-xs-4">
+                                   <div class="form-group">
+                                    <label>Course Type</label>
+                                    <select class="form-control" id="coursetype" name="coursetype" th:value="${coursetype}">
+			                               <option th:each="coursetype : ${T(school.model.school.enumvalue.Coursetype).values()}"
+                                              th:value="${{coursetype}}"
+                                              th:selected="${coursetype == T(school.model.school.enumvalue.Coursetype)}"
+                                              th:text="${coursetype.name()}">
+                                          </option>
+                                    </select>                         
+                                    </div>
+                                    </div>
+                                  </div>
+                                   
+                                   
+		                     	<div class="row">
+			                       	<div class="col-xs-12 col-md-6 text-center"><input type="submit" value="Submit" class="btn btn-primary" tabindex="7"/></div>
+			                       	<div class="col-xs-12 col-md-6 text-center"><input type="Reset" onclick="window.history.go(-1);" value="Cancel" class="btn btn-danger" tabindex="7"/></div>
+		                      	</div>
+		                      	<hr class="colorgraph"/>                
+                          </form>
+                          </div>                
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+              <div class="col-xs-2">
+                 </div> 
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" layout:decorator="admin-layout">
+
+    <div layout:fragment = "main_content">
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                     User List
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">       Add New User </h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group">
+
+                                <a th:href="@{/user/index}" type="button" class="btn  btn-warning btn-xs">Close</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body">                   
+                        
+                                <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+                            <!-- Default box -->
+                            <div class="box box-warning box-solid  ">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Add/ Edit Disciplinary Action</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                    <form action="#" th:action="@{/user/save}" th:object="${employee}" method="post" class="form-horizontal">
+                              
+                                        <div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-ban"></i> Error </h4>
+                                            <ul th:if="${#fields.hasErrors('*')}">
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                                            </ul>
+                                        </div>  
+                                        
+                                        
+                                        <div class="row">
+                                            <input type="hidden" class="form-control"  th:field="*{id}" />
+                              
+                                        </div>                         
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Name  :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{name}"  required="require" />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        
+                                                     <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> User Name :<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{userName}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        
+                                                           <div class="row">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-4 control-label"> Email:<span class="text-red"> * </span></label>
+                                                <div class="col-sm-7">                    
+                                                    <input type="text"  class="form-control  "    th:field="*{email}"  />        
+                                                    <span  class="help-block has-error text-red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">First Name Error</span>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                                        
+               
+                                        <div class="row">
+                                            <div class="text-center" >
+                                                <div class="box-tools">
+                                                    <div class=" text-center">
+                                                        <br/>
+                                                        <button type="submit" class="btn  btn-primary">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box -->              
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div> 
+
+
+
+    </div>
+
+</div>

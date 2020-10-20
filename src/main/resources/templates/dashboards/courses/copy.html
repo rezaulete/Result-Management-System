@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                 <h1>Course <small>All courses</small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+                 <div class="col-xs-12">
+                   <div class="box">
+                     <div class="box-header">
+              <h3 class="box-title">Copy</h3> <p class="text-red" th:text="${errormessage}"></p>
+            </div>
+            <div class="box-body table-responsive no-padding">
+                           <div class="col-md-12">                            
+                                 <form role="form" method="POST" th:object="${course}" th:action="@{/admincourse/paste-course}" enctype="multipart/form-data">
+                                   <div class="row">
+			                       	<div class="col-xs-12 col-md-6 ">
+                                   <p>Title: <span th:text="${course.title}"></span><br/>
+                                   Code: <span th:text="${course.firstcode}"></span>, 
+                                   <span th:if="!${#lists.isEmpty(course.secondcode)}" th:text="${course.secondcode}"></span> 
+                                   <span th:if="!${#lists.isEmpty(course.thirdcode)}" th:text="${course.thirdcode}"></span> <br/>
+                                   Group: <span th:text="${course.groups}"></span><br/>
+                                   Type: <span th:text="${course.coursetype}"></span><br/>
+                                   </p>
+                                   <input type="hidden" id="title" name="title" th:value="${course.title}"/>
+                                   <input type="hidden" id="firstcode" name="firstcode" th:value="${course.firstcode}"/>
+                                   <input type="hidden" id="secondcode" name="secondcode" th:value="${course.secondcode}"/>
+                                   <input type="hidden" id="thirdcode" name="thirdcode" th:value="${course.thirdcode}"/>
+                                   <input type="hidden" id="groups" name="groups" th:value="${course.groups}"/>
+                                  <input type="hidden" id="coursetype" name="coursetype" th:value="${course.coursetype}"/>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6 ">
+                                    <div class="form-group">
+                                    <label>Copy To</label>
+                                    <select class="form-control" id="stclass" name="stclass" th:value="${stclass}">
+			                               <option th:each="stclass : ${T(school.model.school.enumvalue.Stclass).values()}"
+                                              th:value="${{stclass}}"
+                                              th:disabled="${stclass == course.stclass}"
+                                              th:text="${stclass.name()}">
+                                          </option>
+                                    </select>                         
+                                    </div>
+           </div></div>
+		                     	<div class="row">
+			                       	<div class="col-xs-12 col-md-6 text-center"><input type="submit" value="Submit" class="btn btn-primary" tabindex="7"/></div>
+			                       	<div class="col-xs-12 col-md-6 text-center"><input type="Reset" onclick="window.history.go(-1);" value="Cancel" class="btn btn-danger" tabindex="7"/></div>
+		                      	</div>
+		                      	<hr class="colorgraph"/>                
+                          </form>
+                          </div>                
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+              
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="admin-layout">
+    <div layout:fragment = "main_content">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                 <h1>Marks <small>Course Marks</small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+                 <div class="col-xs-12">
+                   <div class="box">
+                     <div class="box-header">
+              <h3 class="box-title">Edit Form</h3> <p class="text-red" th:text="${errormessage}"></p>
+            </div>
+            <div class="box-body table-responsive no-padding">
+                           <div class="col-md-12">                            
+                           									<form role="form" method="POST" th:object="${marks}"
+										th:action="@{/adminmarks/update-marks}"
+										enctype="multipart/form-data">
+										<input type="hidden" id="id" name="id" th:value="${marks.id}"/>
+										<input type="hidden" id="student" name="student" th:value="${marks.student.id}"/>
+										<input type="hidden" id="register" name="register" th:value="${marks.register.id}"/>
+										<input type="hidden" id="exam" name="exam" th:value="${marks.exam.id}"/>
+										<input type="hidden" id="courseExam" name="courseExam" th:value="${marks.courseExam.id}"/>
+									
+									
+										<div class="row">
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Written Mark</label> <input type="number"
+														name="writtenmark" th:required="required" maxlength="250"
+														id="writtenmark" class="form-control"
+														placeholder="Enter student written marks"
+														th:value="${marks.writtenmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('writtenmark')}"
+														th:errors="*{writtenmark}"></span>
+												</div>
+											</div>
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Objective Mark</label> <input type="number"
+														name="objectivemark" th:required="required"
+														maxlength="250" id="objectivemark" class="form-control"
+														placeholder="Enter student objective marks"
+														th:value="${marks.objectivemark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('objectivemark')}"
+														th:errors="*{objectivemark}"></span>
+												</div>
+											</div>
+											<div class="col-xs-4">
+												<div class="form-group">
+													<label>Lab/Quiz Mark</label> <input type="number"
+														name="labmark" th:required="required" maxlength="250"
+														id="labmark" class="form-control"
+														placeholder="Enter student lab marks"
+														th:value="${marks.labmark}" /> <span
+														class="help-block text-danger"
+														th:if="${#fields.hasErrors('labmark')}"
+														th:errors="*{labmark}"></span>
+												</div>
+											</div>
+										</div>
+		                     	<div class="row">
+			                       	<div class="col-xs-12 col-md-6 text-center"><input type="submit" value="Submit" class="btn btn-primary" tabindex="7"/></div>
+			                       	<div class="col-xs-12 col-md-6 text-center"><input type="Reset" onclick="window.history.go(-1);" value="Cancel" class="btn btn-danger" tabindex="7"/></div>
+		                      	</div>
+		                      	<hr class="colorgraph"/>                
+                          </form>
+                          </div>                
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+              
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+</div>

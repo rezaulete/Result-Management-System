@@ -1,0 +1,563 @@
+.home-container {
+	min-height: 500px;
+}
+
+.box-top {
+	margin-top: 60px;
+	padding-top: 30px;
+}
+
+.text-red {
+	color: red;
+}
+
+.text-green {
+	color: green;
+}
+
+.text-white {
+	color: white;
+}
+
+.text-large {
+	font-size: 120%;
+}
+
+.change1 {
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+
+.change1:hover {
+	color: red;
+	background-color: green;
+}
+
+.MarkGreen {
+	height: 10px;
+	width: 100%;
+	background-color: green;
+}
+
+.MarkRed {
+	height: 10px;
+	width: 100%;
+	background-color: red;
+}
+
+.MarkBrown {
+	height: 10px;
+	width: 100%;
+	background-color: brown;
+}
+
+.Text-Box {
+	background-color: antiquewhite;
+	width: 100%;
+	height: 100%;
+	padding-left: 1%;
+	padding-top: 0;
+}
+
+.Text-Box2 {
+	background-color: maroon;
+	width: 100%;
+	height: 100%;
+	margin-top: 6%;
+	margin-left: 0;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	border-radius: 5px;
+}
+
+.Text-Box3 {
+	background-color: maroon;
+	position: absolute; 
+	width : 100%;
+	height: 200px;
+	margin-top: 60%;
+	margin-left: 0;
+	width: 100%;
+}
+
+.mypre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.limited {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.limited2 {
+	width: 90%;
+	height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card {
+	margin: 16px 6px 1px 1px;
+	padding: 6px 3px 3px 3px;
+}
+
+.WithBgImage {
+	background-repeat: no-repeat;
+	background-image: url('/school-image/welcome.png');
+	height: 600px;
+	width: 600px;
+}
+
+/*..... Footer..... */
+@import
+	url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+	;
+
+section .section-title {
+	text-align: center;
+	color: #ffff80;
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+
+#footer {
+	background: #282828 !important;
+	margin-top: 0px;
+	padding-left: 0px;
+}
+
+#footer h5 {
+	padding-left: 10px;
+	padding-bottom: 6px;
+	margin-bottom: 20px;
+	color: #ffffff;
+}
+
+#footer h3 {
+	padding-left: 10px;
+	padding-bottom: 6px;
+	margin-bottom: 20px;
+	color: #ffffff;
+}
+
+#footer p {
+	padding-left: 10px;
+	padding-bottom: 6px;
+	margin-bottom: 20px;
+	color: #ffff80;
+}
+
+#footer a {
+	color: #ffffff;
+	text-decoration: none !important;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+
+#footer ul.social li {
+	padding: 3px 0;
+}
+
+#footer ul.social li a i {
+	margin-right: 5px;
+	font-size: 25px;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+
+#footer ul.social li:hover a i {
+	font-size: 30px;
+	margin-top: -10px;
+}
+
+#footer ul.social li a, #footer ul.quick-links li a {
+	color: #ffffff;
+}
+
+#footer ul.social li a:hover {
+	color: #eeeeee;
+}
+
+#footer ul.quick-links li {
+	padding: 3px 0;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+
+#footer ul.quick-links li:hover {
+	padding: 3px 0;
+	margin-left: 5px;
+	font-weight: 700;
+}
+
+#footer ul.quick-links li a i {
+	margin-right: 5px;
+}
+
+#footer ul.quick-links li:hover a i {
+	font-weight: 700;
+}
+
+@media ( max-width :767px) {
+	#footer h5 {
+		padding-left: 0;
+		border-left: transparent;
+		padding-bottom: 0px;
+		margin-bottom: 10px;
+	}
+}
+/*..... Footer End..... */
+/* footer social icons */
+.social:hover {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+}
+
+.social {
+	-webkit-transform: scale(0.8);
+	/* Browser Variations: */
+	-moz-transform: scale(0.8);
+	-o-transform: scale(0.8);
+	-webkit-transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+}
+
+/*
+    Multicoloured Hover Variations
+*/
+#social-fb:hover {
+	color: #3B5998;
+}
+
+#social-tw:hover {
+	color: #4099FF;
+}
+
+#social-gp:hover {
+	color: #d34836;
+}
+
+#social-em:hover {
+	color: #f39c12;
+}
+
+/*..... News Page..... */
+.news .img-container {
+	position: relative;
+	width: 100%;
+}
+
+.news .image {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.news .overlay {
+	position: absolute;
+	bottom: 0;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.5); /* Black see-through */
+	color: #f1f1f1;
+	width: 100%;
+	transition: .5s ease;
+	opacity: 0;
+	color: white;
+	font-size: 20px;
+	padding: 20px;
+	text-align: center;
+}
+
+.news .img-container:hover .overlay {
+	opacity: 1;
+}
+
+/*..... Gallery Page..... */
+.galleryBox {
+	width: 100%;
+	height: 300px;
+	position: relative;
+	border-radius: 5px;
+}
+
+.galleryBox .overlay {
+	position: absolute;
+	bottom: 0;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.5); /* Black see-through */
+	color: #ff0000;
+	width: 100%;
+	height: 100%;
+	transition: .5s ease;
+	opacity: 0;
+	color: #ffff00;
+	font-size: 20px;
+	padding: 40%;
+	text-align: center;
+}
+
+.galleryBox:hover .overlay {
+	opacity: 1;
+}
+
+.gallery {
+	background-color: #1d1d1d !important;
+	font-family: "Asap", sans-serif;
+	color: #989898;
+	margin: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+.gallery .green {
+	background-color: #6fb936;
+}
+
+.thumb {
+	margin-bottom: 30px;
+}
+
+.page-top {
+	margin-top: 85px;
+}
+
+.gallery .zoom {
+	width: 100%;
+	height: 300px;
+	border-radius: 5px;
+	object-fit: cover;
+	border: 1px solid green;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+}
+
+.gallery .zoom:hover {
+	transform: scale(1.2);
+	/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.gallery .transition {
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.modal-header {
+	border-bottom: none;
+}
+
+.modal-title {
+	color: #000;
+}
+
+.modal-footer {
+	display: none;
+}
+
+.folder {
+	width: 100%;
+	height: 300px;
+	position: relative;
+	border-radius: 5px;
+}
+
+/****************************/
+/* Extra Effects*/
+/* Effect 3 */
+.effect3 a {
+	color: #000;
+	overflow: hidden;
+	padding: 0 5px;
+	height: 1.2em;
+}
+
+.effect3 a span {
+	position: relative;
+	display: inline-block;
+	transition: transform 0.3s;
+	-moz-transition: -moz-transform 0.3s;
+	-webkit-transition: -webkit-transform 0.3s;
+}
+
+.effect3 a span::before {
+	color: #6ABD52;
+	position: absolute;
+	top: 100%;
+	content: attr(data-hover);
+	transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.effect3 a:hover span, .effect3 a:focus span {
+	transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+}
+/*
+@media screen and (max-width: 770px) {
+   .effect3 a span::before {
+	  display:none;
+   }
+*/
+.mob-menu--title {
+	font-size: 0px !important;
+	float: right !important;
+	display: block !important;
+}
+
+.header-content-wrapper {
+	display: inline-flex !important;
+}
+
+}
+.TextLine1 {
+	width: 100%;
+	min-height: 20px;
+	color: green;
+}
+
+/* Effect zoom */
+.zoom1 {
+	-webkit-transition: .1s;
+	transition: .2s;
+}
+
+.zoom1:hover {
+	transform: scale(1.1);
+	overflow: hidden;
+	color: red;
+	background-color: green;
+}
+
+.zoom2 {
+	padding: 50px;
+	background-color: green;
+	transition: transform .2s;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+.zoom2:hover {
+	-ms-transform: scale(1.5); /* IE 9 */
+	-webkit-transform: scale(1.5); /* Safari 3-8 */
+	transform: scale(1.5);
+}
+
+.zoom3 {
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+
+.zoom3:hover {
+	transform: scale(1.1);
+}
+
+.zoom4 {
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+
+.zoom4:hover {
+	transform: scale(1.3);
+}
+
+/* Effect Background */
+.Back1 {
+	width: 100%;
+	min-height: 120px;
+	color: #fff;
+	background: linear-gradient(-45deg, #fff, #ffffb3, #ddffcc, #fff);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@
+-webkit-keyframes Gradient { 0% {
+	background-position: 0% 50%
+}
+
+50%
+{
+background-position
+:
+ 
+100%
+50%
+}
+100%
+{
+background-position
+:
+ 
+0%
+50%
+}
+}
+@
+-moz-keyframes Gradient { 0% {
+	background-position: 0% 50%
+}
+
+50%
+{
+background-position
+:
+ 
+100%
+50%
+}
+100%
+{
+background-position
+:
+ 
+0%
+50%
+}
+}
+@
+keyframes Gradient { 0% {
+	background-position: 0% 50%
+}
+50%
+{
+background-position
+:
+ 
+100%
+50%
+}
+100%
+{
+background-position
+:
+ 
+0%
+50%
+}
+}
